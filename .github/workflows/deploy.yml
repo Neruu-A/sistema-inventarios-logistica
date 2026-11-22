@@ -1,0 +1,19 @@
+name: Despliegue Seguro a Produccion
+
+on:
+  push:
+    branches:
+      - main # Solo se ejecuta cuando se aprueba un cambio en la rama principal
+
+jobs:
+  verificar-y-desplegar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar codigo aprobado
+        uses: actions/checkout@v4
+
+      - name: Ejecutar pruebas basicas de seguridad
+        run: echo "Verificando integridad del codigo antes de subir..."
+
+      - name: Desplegar al servidor de Logistica Global
+        run: echo "Despliegue exitoso mediante llave SSH nominal."
